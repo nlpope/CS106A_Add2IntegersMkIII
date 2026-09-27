@@ -24,10 +24,13 @@ import acm.program.*;
 
 public class CS106A_Add2IntegersMkIII extends ConsoleProgram
 {
+	/** named constants */
 	private static final int SENTINEL = -1;
+	
 	public void run()
 	{
 		println("enter 2 integers to add. They may be negative. Enter '-1' to exit.");
+		
 		while(true){
 			int n1 = myReadInt("Enter n1: ");
 			if (n1 == SENTINEL){ println("goodbye"); return; }
@@ -42,6 +45,10 @@ public class CS106A_Add2IntegersMkIII extends ConsoleProgram
 	}
 	
 	
+	/**
+	 * @param prompt The prompt displayed to the user
+	 * @return String returned in integer format for sum
+	 * */
 	private int myReadInt(String prompt)
 	{
 		int numStrToInt;
