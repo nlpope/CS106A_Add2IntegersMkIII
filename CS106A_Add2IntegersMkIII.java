@@ -27,15 +27,16 @@ public class CS106A_Add2IntegersMkIII extends ConsoleProgram
 	private static final int SENTINEL = -1;
 	public void run()
 	{
+		println("enter 2 integers to add. They may be negative. Enter '-1' to exit.");
 		while(true){
-			Integer n1 = myReadInt("Enter n1: ");
-			if (n1 == SENTINEL){ println("goodbye."); return; }
+			int n1 = myReadInt("Enter n1: ");
+			if (n1 == SENTINEL){ println("goodbye"); return; }
 			
-			Integer n2 = myReadInt("Enter n2: ");
-			if (n2 == null) { continue; }
-			if (n2 == SENTINEL){ println("goodbye."); return; }
+			int n2 = myReadInt("Enter n2: ");
+			if (n2 == SENTINEL){ println("goodbye"); return; }
 			
 			int sum = n1 + n2;
+			
 			println(n1 + " + " + n2 + " = " + sum);
 		}
 	}
@@ -43,25 +44,32 @@ public class CS106A_Add2IntegersMkIII extends ConsoleProgram
 	
 	private int myReadInt(String prompt)
 	{
-		int numStrToInt = 1;
-		String checkedStr = "";
+		int numStrToInt;
+	
 		while(true){
+			String checkedStr = "";
 			String numStr = readLine(prompt);
-			
 			for (int i = 0; i < numStr.length(); i++){
 				char c = numStr.charAt(i);
+				
 				if (i == 0 && c == '-'){
+					//testing the absence of .equals() method for lack of existence
+					//in chars
 					println("negative detected");
-					numStrToInt *= -1;
+					checkedStr += c;
 				} else if (Character.isDigit(c)){
-					
-				} 
+					checkedStr += c;
+				} 	
 			}
-			//only use parseint if all the nums in string check out.
-			//break if all checks out. otherwise loop each individ. number
 			
-			break;
+			if (numStr.equals(checkedStr)){
+				numStrToInt = Integer.parseInt(checkedStr);
+				break;
+			} else { 
+				println("Error: Invalid format. Please try again.");
+			}
 		}
+		
 		return numStrToInt;
 	}
 }
