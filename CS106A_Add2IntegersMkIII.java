@@ -25,11 +25,13 @@ import acm.program.*;
 public class CS106A_Add2IntegersMkIII extends ConsoleProgram
 {
 	/** named constants */
-	private static final int SENTINEL = -1;
+	private static final int SENTINEL = -0;
 	
 	public void run()
 	{
-		println("enter 2 integers to add. They may be negative. Enter '-1' to exit.");
+		println("enter 2 integers to add. They may be negative. Enter '" 
+				+ SENTINEL 
+				+ "' to exit.");
 		
 		while(true){
 			int n1 = myReadInt("Enter n1: ");
@@ -60,9 +62,6 @@ public class CS106A_Add2IntegersMkIII extends ConsoleProgram
 				char c = numStr.charAt(i);
 				
 				if (i == 0 && c == '-'){
-					//testing the absence of .equals() method for lack of existence
-					//in chars
-					println("negative detected");
 					checkedStr += c;
 				} else if (Character.isDigit(c)){
 					checkedStr += c;
