@@ -1,5 +1,6 @@
-//CS106A_Add2IntegersMkIII
 /***
+ * File: CS106A_Add2IntegersMkIII
+ * -------------------------------------
  * The CS106A_Add2IntegersMkIII class mimics
  * the readInt method via the readLine method.
  * It is simplified from the incomplete MkII
@@ -8,6 +9,12 @@
  * file as its implementor to more easily 
  * access the acm.util via a ConsoleProgram
  * extension.
+ * 
+ * Attriubtions:
+ * This solution is based on SergiuPlesco's 
+ * posted in github at the below url:
+ * 
+ * https://github.com/SergiuPlesco/The-Art-and-Science-of-Java/blob/master/Chapter-8/Add2Integers.java
  */
 
 import acm.program.*; 
@@ -20,30 +27,40 @@ public class CS106A_Add2IntegersMkIII extends ConsoleProgram
 	private static final int SENTINEL = -1;
 	public void run()
 	{
-		println("applet running...");
 		while(true){
 			Integer n1 = myReadInt("Enter n1: ");
-			if (n1 == null){}
 			if (n1 == SENTINEL){ println("goodbye."); return; }
-			else if (n1 == null){}
 			
-			int n2 = myReadInt("Enter n2: ");
+			Integer n2 = myReadInt("Enter n2: ");
+			if (n2 == null) { continue; }
 			if (n2 == SENTINEL){ println("goodbye."); return; }
 			
-			println(n1 + n2);
+			int sum = n1 + n2;
+			println(n1 + " + " + n2 + " = " + sum);
 		}
 	}
 	
 	
-	private Integer myReadInt(String prompt)
+	private int myReadInt(String prompt)
 	{
-		String numStr = readLine(prompt);
-		int numStrToInt;
-		try {
-			numStrToInt = Integer.parseInt(numStr);
-		} catch (NumberFormatException e) { 
-			println(e);
-			return null;
+		int numStrToInt = 1;
+		String checkedStr = "";
+		while(true){
+			String numStr = readLine(prompt);
+			
+			for (int i = 0; i < numStr.length(); i++){
+				char c = numStr.charAt(i);
+				if (i == 0 && c == '-'){
+					println("negative detected");
+					numStrToInt *= -1;
+				} else if (Character.isDigit(c)){
+					
+				} 
+			}
+			//only use parseint if all the nums in string check out.
+			//break if all checks out. otherwise loop each individ. number
+			
+			break;
 		}
 		return numStrToInt;
 	}
